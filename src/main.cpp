@@ -1,23 +1,14 @@
 #include <QGuiApplication>
-#include <QQmlApplicationEngine>
 
+#include <ui/MainForm.hpp>
 
-int main(int argc, char *argv[])
-{
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
+int main(int argc, char *argv[]) {
+	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    QGuiApplication app(argc, argv);
+	QGuiApplication app(argc, argv);
 
-    QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/ui/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
-    engine.load(url);
+	ui::MainForm main_form;
+	main_form.show();
 
-    return app.exec();
+	return app.exec();
 }

@@ -1,5 +1,7 @@
 <RCC>
-    <qresource prefix="/">
+    <qresource prefix="/qml">
         <file>ui/main.qml</file>
+        <file>ui/components/colors.js</file>
+        <file>ui/components/DefaultButton.qml</file>
     </qresource>
 </RCC>
